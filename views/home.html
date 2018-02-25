@@ -1,0 +1,32 @@
+{{ template "header" }}
+    <title>首页 - 我的博客</title>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            {{ template "navbar" . }}
+        </div>
+    </div>
+    <!--{{i18n .Lang .Hi}}
+    {{i18n .Lang .Bye}}-->
+    <div class="container" style="padding-top: 80px;">
+        <div class="col-md-9">
+            {{range .Topics}}
+            <div class="page-header">
+                <h1><a href="/topic/view/{{.Id}}">{{.Title}}</a></h1>
+                <h6 class="text_muted">文章发表于 {{.Created}} {{.Views}}浏览 {{.ReplyCount}}评论</h6>
+                <p>{{.Content}}</p>
+            </div>
+            {{end}}
+        </div>
+        <div class="col-md-3">
+            <h3>文章分类</h3>
+            <ul>
+                {{range .Categories}}
+                <li><a href="/?cate={{.Title}}">{{.Title}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

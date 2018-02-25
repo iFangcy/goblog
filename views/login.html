@@ -1,0 +1,46 @@
+{{ template "header" }}
+    <title>登录 - 我的博客</title>
+</head>
+<body>
+    <div class="container" style="width: 500px; padding-top: 80px;">
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label>Account</label>
+                <input id="username" class="form-control" placeholder="Enter account" name="username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input id="password" type="password" class="form-control" placeholder="Password" name="password">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="autoLogin"> 自动登录
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default" onclick="return checkInput();">登录</button>
+            <button class="btn btn-default" onclick="return backHome();">返回首页</button>
+        </form>
+    </div>
+
+    <script>
+        function checkInput() {
+            const username = document.getElementById("username")
+            if (username.value.length == 0) {
+                alert("请输入账号");
+                return false
+            }
+            const password = document.getElementById("password")
+            if (password.value.length == 0) {
+                alert("请输入密码");
+                return false
+            }
+            return true
+        }
+
+        function backHome() {
+            window.location.href = "/";
+            return;
+        }
+    </script>
+</body>
+</html>
